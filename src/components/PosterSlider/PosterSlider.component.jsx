@@ -8,6 +8,9 @@ import PosterCarousalsettings from "../../config/PoaterCarousal.config";
 import Poster from "../Poster/Poster.component";
 
 export const PosterSlider = (props) => {
+
+  const sliderConfig = props.config? props.config:PosterCarousalsettings; 
+
   return (
     <>
       <div className="flex flex-col items-start my-2">
@@ -16,7 +19,7 @@ export const PosterSlider = (props) => {
         </h3>
         <p className={`twxt-sm ${props.isDark ? "text-white" : "text-gray-800"}`}>{props.subtitle}</p>
       </div>
-      <Slider {...PosterCarousalsettings}>
+      <Slider {...sliderConfig}>
         {props.images.map((image) => (
           <Poster {...image} isDark={props.isDark} />
         ))}
