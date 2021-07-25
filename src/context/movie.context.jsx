@@ -1,3 +1,4 @@
+  
 import React, { useState } from "react";
 
 export const MovieContext = React.createContext();
@@ -17,3 +18,5 @@ const MovieProvider = ({ children }) => {
     </MovieContext.Provider>
   );
 };
+
+export default MovieProvider;

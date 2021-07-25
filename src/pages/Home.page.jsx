@@ -1,20 +1,17 @@
-import React, { useState, useEffect } from "react";
-import Slider from "react-slick";
 import axios from "axios";
+import React, { useState, useEffect } from "react";
 
-//component
+// Components
 import EntertainmentCardSlider from "../components/Entertainment/Entertainment.componentcard";
 import PosterSlider from "../components/PosterSlider/PosterSlider.component";
 
-//config
-
-import TempPoster from "../config/TempPoster.config";
+// config
+import TempPosters from "../config/TempPoster.config";
 
 const HomePage = () => {
-
-  const[popularMovies,setPopularMovies] = useState([]);
-  const[topRatedMovies,setopRatedMovies] = useState([]);
-  const[upcomingMovies,setUpcomingMovies] = useState([]);
+  const [popularMovies, setPopularMovies] = useState([]);
+  const [topRatedMovies, setTopRatedMovies] = useState([]);
+  const [upcomingMovies, setUpcomingMovies] = useState([]);
 
   useEffect(() => {
     const requestPopularMovies = async () => {
@@ -26,23 +23,22 @@ const HomePage = () => {
   }, []);
 
   useEffect(() => {
-    const requesttopRatedMovies = async () => {
-      const gettopRatedMovies = await axios.get("/movie/top_rated");
-      setopRatedMovies(gettopRatedMovies.data.results);
+    const requestTopRatedMovies = async () => {
+      const getTopRatedMovies = await axios.get("/movie/top_rated");
+      setTopRatedMovies(getTopRatedMovies.data.results);
     };
 
-    requesttopRatedMovies();
+    requestTopRatedMovies();
   }, []);
 
   useEffect(() => {
-    const requestupcomingMovies = async () => {
-      const getupcomingMovies = await axios.get("/movie/upcoming");
-      setUpcomingMovies(getupcomingMovies.data.results);
+    const requestUpcomingMovies = async () => {
+      const getUpcomingMovies = await axios.get("/movie/upcoming");
+      setUpcomingMovies(getUpcomingMovies.data.results);
     };
 
-    requestupcomingMovies();
+    requestUpcomingMovies();
   }, []);
-
 
   return (
     <>
@@ -53,43 +49,42 @@ const HomePage = () => {
           </h1>
           <EntertainmentCardSlider />
         </div>
+
         <div className="bg-bms-800 py-12 ">
           <div className="container mx-auto px-4 flex flex-col gap-3">
             <div className="hidden md:flex">
               <img
                 src="https://in.bmscdn.com/discovery-catalog/collections/tr:w-1440,h-120/premiere-rupay-banner-web-collection-202104230555.png"
-                alt="Premier"
+                alt="Rupay"
                 className="w-full h-full"
               />
             </div>
             <PosterSlider
               images={popularMovies}
               title="Premieres"
-              subtitle="Brand ner relese every friday"
+              subtitle="Brand new relases every friday"
               isDark
             />
           </div>
         </div>
       </div>
 
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 my-8">
         <PosterSlider
           images={topRatedMovies}
-          title="Top Rated Movies"
+          title="Online Streaming events"
           isDark={false}
         />
       </div>
-
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 my-8">
         <PosterSlider
           images={upcomingMovies}
-          title="Up Coming Movies"
+          title="Outdoor events"
           isDark={false}
         />
       </div>
-
-  
     </>
   );
 };
+
 export default HomePage;

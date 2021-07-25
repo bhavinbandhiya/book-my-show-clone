@@ -1,7 +1,10 @@
-import React from "react";
+import React,{useContext} from "react";
 import Movieinfo from "./Movieinfo.component";
+import {MovieContext} from "../../context/movie.context";
 
 export const MovieHero = () => {
+const{movie} = useContext(MovieContext);
+
   return (
     <>
       <div>
@@ -16,7 +19,7 @@ export const MovieHero = () => {
           </div>
           <div className="w-full h-56 absolute bg-opacity-50 bg-black x-10 bottom-0" />
           <img
-            src="https://in.bmscdn.com/iedb/movies/images/extra/vertical_logo/mobile/thumbnail/xxlarge/proximity-et00302306-13-05-2021-10-06-47.jpg"
+            src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
             alt="poster"
             className="w-full h-full"
           />
@@ -34,7 +37,7 @@ export const MovieHero = () => {
           </div>
 
           <img
-            src="https://in.bmscdn.com/iedb/movies/images/extra/vertical_logo/mobile/thumbnail/xxlarge/proximity-et00302306-13-05-2021-10-06-47.jpg"
+             src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
             alt="poster"
             className="w-full h-full"
           />
@@ -53,7 +56,7 @@ export const MovieHero = () => {
           <div className="absolute z-30 left-24 top-10 flex items-center gap-10">
             <div className=" w-64 h-96  ">
               <img
-                src="https://in.bmscdn.com/iedb/movies/images/extra/vertical_logo/mobile/thumbnail/xxlarge/proximity-et00302306-13-05-2021-10-06-47.jpg"
+                 src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
                 alt="poster"
                 className="w-full h-full rounded-xl"
               />
@@ -64,7 +67,7 @@ export const MovieHero = () => {
           </div>
 
           <img
-            src="https://in.bmscdn.com/iedb/movies/images/extra/horizontal_no_logo/mobile/listing/xxlarge/proximity-et00302306-13-05-2021-10-06-47.jpg"
+             src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
             alt="poster"
             className="w-full h-full"
           />
